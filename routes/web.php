@@ -25,3 +25,4 @@ Route::post('/store', [App\Http\Controllers\ProfesorController::class, 'store'])
 Route::get('/edit/{id}', [App\Http\Controllers\ProfesorController::class, 'edit'])->name('profesores.edit');
 Route::put('/update/{id}', [App\Http\Controllers\ProfesorController::class, 'update'])->name('profesores.update');
 Route::delete('/destroy/{id}', [App\Http\Controllers\ProfesorController::class, 'destroy'])->name('profesores.destroy');
+Route::get('/show/{id}', [App\Http\Controllers\ProfesorController::class, 'show'])->name('profesores.show');

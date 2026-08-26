@@ -77,6 +77,12 @@
                                     >
                                         Editar
                                     </a>
+                                     <a
+                                        href="{{ route('profesores.show', $profesor->id) }}"
+                                        class="btn btn-sm btn-info"
+                                    >
+                                        Ver
+                                    </a>
                                     <form method="POST" action="{{ route('profesores.destroy', $profesor->id) }}" style="display:inline;">
                                         @csrf
                                         @method('delete')

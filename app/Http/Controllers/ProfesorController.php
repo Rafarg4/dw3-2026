@@ -40,4 +40,8 @@ class ProfesorController extends Controller
         $profesor->delete();
         return redirect()->route('profesores.index')->with('success', 'Profesor eliminado exitosamente.');
     }
+    public function show($id){
+        $profesor = Profesor::findOrFail($id);
+        return view('profesores.show', compact('profesor'));
+    }
 }
