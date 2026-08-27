@@ -1,152 +1,140 @@
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-<div class="container profesores-page">
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Datos del profesor</title>
 
-    <div class="profesores-header">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 
-        <div>
-            <h3>Datos del Profesor</h3>
-            <p>Información registrada del profesor</p>
-        </div>
+    <style>
+        .profesores-page {
+            padding-top: 20px;
+            padding-bottom: 30px;
+        }
 
-        <div>
+        .profesores-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            gap: 15px;
+        }
 
-        </div>
+        .profesores-header h1 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: 700;
+            color: #2c3e50;
+        }
 
-    </div>
+        .profesores-header p {
+            margin: 4px 0 0;
+            color: #6c757d;
+            font-size: 14px;
+        }
 
+        .profesores-card {
+            border: 0;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        }
 
-    <div class="card profesores-card">
+        .estado-activo,
+        .estado-inactivo {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+        }
 
-        <div class="card-body p-4">
+        .estado-activo {
+            background-color: #d1e7dd;
+            color: #0f5132;
+        }
 
-            <div class="row">
+        .estado-inactivo {
+            background-color: #e2e3e5;
+            color: #41464b;
+        }
+    </style>
+</head>
+<body>
+    <main class="container profesores-page">
 
-                <div class="col-md-6 mb-4">
-                    <label class="text-muted">
-                        Nombre
-                    </label>
-
-                    <div class="fw-bold">
-                        {{ $profesor->nombre }}
-                    </div>
-                </div>
-
-
-                <div class="col-md-6 mb-4">
-                    <label class="text-muted">
-                        Apellido
-                    </label>
-
-                    <div class="fw-bold">
-                        {{ $profesor->apellido }}
-                    </div>
-                </div>
-
+        <header class="profesores-header">
+            <div>
+                <h1>Datos del profesor</h1>
+                <p>Información registrada del profesor</p>
             </div>
+            <a href="{{ route('profesores.index') }}" class="btn btn-outline-secondary">
+                Volver
+            </a>
+        </header>
 
+        <section class="card profesores-card">
+            <div class="card-body p-4">
 
-            <div class="row">
+                <dl class="row mb-0">
+                    <dt class="col-md-6 text-muted fw-normal">Nombre</dt>
+                    <dd class="col-md-6 fw-bold">{{ $profesor->nombre }}</dd>
+                </dl>
 
-                <div class="col-md-4 mb-4">
+                <dl class="row mb-0">
+                    <dt class="col-md-6 text-muted fw-normal">Apellido</dt>
+                    <dd class="col-md-6 fw-bold">{{ $profesor->apellido }}</dd>
+                </dl>
 
-                    <label class="text-muted">
-                        Documento
-                    </label>
+                <dl class="row mb-0">
+                    <dt class="col-md-6 text-muted fw-normal">Documento</dt>
+                    <dd class="col-md-6 fw-bold">{{ $profesor->documento ?? '-' }}</dd>
+                </dl>
 
-                    <div class="fw-bold">
-                        {{ $profesor->documento ?? '-' }}
-                    </div>
+                <dl class="row mb-0">
+                    <dt class="col-md-6 text-muted fw-normal">Teléfono</dt>
+                    <dd class="col-md-6 fw-bold">{{ $profesor->telefono ?? '-' }}</dd>
+                </dl>
 
-                </div>
-
-
-                <div class="col-md-4 mb-4">
-
-                    <label class="text-muted">
-                        Teléfono
-                    </label>
-
-                    <div class="fw-bold">
-                        {{ $profesor->telefono ?? '-' }}
-                    </div>
-
-                </div>
-
-
-                <div class="col-md-4 mb-4">
-
-                    <label class="text-muted">
-                        Estado
-                    </label>
-
-                    <div>
-
+                <dl class="row mb-0">
+                    <dt class="col-md-6 text-muted fw-normal">Estado</dt>
+                    <dd class="col-md-6">
                         @if ($profesor->estado === 'ACTIVO')
-
-                            <span class="estado-activo">
-                                ACTIVO
-                            </span>
-
+                            <span class="estado-activo">ACTIVO</span>
                         @else
-
-                            <span class="estado-inactivo">
-                                INACTIVO
-                            </span>
-
+                            <span class="estado-inactivo">INACTIVO</span>
                         @endif
+                    </dd>
+                </dl>
 
-                    </div>
+                <dl class="row mb-0">
+                    <dt class="col-md-6 text-muted fw-normal">Email</dt>
+                    <dd class="col-md-6 fw-bold">{{ $profesor->email ?? '-' }}</dd>
+                </dl>
 
+                <dl class="row mb-0">
+                    <dt class="col-md-6 text-muted fw-normal">Especialidad</dt>
+                    <dd class="col-md-6 fw-bold">{{ $profesor->especialidad ?? '-' }}</dd>
+                </dl>
+
+                <hr>
+
+                <div class="d-flex justify-content-end gap-2">
+                    <a href="{{ route('profesores.edit', $profesor->id) }}" class="btn btn-warning">
+                        Editar
+                    </a>
+                    <a href="{{ route('profesores.index') }}" class="btn btn-outline-secondary">
+                        Volver
+                    </a>
                 </div>
 
             </div>
+        </section>
 
+    </main>
 
-            <div class="row">
-
-                <div class="col-md-6 mb-4">
-
-                    <label class="text-muted">
-                        Email
-                    </label>
-
-                    <div class="fw-bold">
-                        {{ $profesor->email ?? '-' }}
-                    </div>
-
-                </div>
-
-
-                <div class="col-md-6 mb-4">
-
-                    <label class="text-muted">
-                        Especialidad
-                    </label>
-
-                    <div class="fw-bold">
-                        {{ $profesor->especialidad ?? '-' }}
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <hr>
-
-
-            <div class="d-flex justify-content-end gap-2">
-
-                <a
-                    href="{{ route('profesores.index') }}"
-                    class="btn btn-outline-secondary">
-                    Volver
-                </a>
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -23,7 +23,7 @@ class ProfesorController extends Controller
         'documento' => $request->input('documento'),
         'especialidad' => $request->input('especialidad'),
     ]);
-    return redirect()->route('index')->with('success', 'Profesor creado exitosamente.');
+    return redirect()->route('profesores.index')->with('success', 'Profesor creado exitosamente.');
     }
     public function edit($id)
     {
