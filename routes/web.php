@@ -29,6 +29,6 @@ Route::put('/profesores/update/{id}', [App\Http\Controllers\ProfesorController::
 Route::delete('/profesores/destroy/{id}', [App\Http\Controllers\ProfesorController::class, 'destroy'])->name('profesores.destroy');
 Route::get('/profesores/show/{id}', [App\Http\Controllers\ProfesorController::class, 'show'])->name('profesores.show');
 //Rutas de materias
-Route::get('/index', [App\Http\Controllers\MateriaController::class, 'index'])->name('materias.index');
-Route::get('/create', [App\Http\Controllers\MateriaController::class, 'create'])->name('materias.create');
-Route::post('/store', [App\Http\Controllers\MateriaController::class, 'store'])->name('materias.store');
+Route::get('/materias/index', [App\Http\Controllers\MateriaController::class, 'index'])->name('materias.index');
+Route::get('/materias/create', [App\Http\Controllers\MateriaController::class, 'create'])->name('materias.create');
+Route::post('materias/store', [App\Http\Controllers\MateriaController::class, 'store'])->name('materias.store');

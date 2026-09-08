@@ -16,6 +16,7 @@ class CreateMateriasTable extends Migration
         Schema::create('materias', function (Blueprint $table) {
             $table->id();
             $table->string('nombre', 100);
+            $table->integer('id_profesor');
             $table->string('codigo', 20)->unique();
             $table->string('descripcion', 500);
             $table->string('estado', 20)->default('Activo');

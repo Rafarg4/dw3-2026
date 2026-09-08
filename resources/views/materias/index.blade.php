@@ -146,6 +146,7 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Nobmre</th>
+                                <th>Profesor</th>
                                 <th>Descripcion</th>
                                 <th>Codigo</th>
                                 <th>Estado</th>
@@ -157,6 +158,7 @@
                                 <tr>
                                     <td>{{ $mate->id }}</td>
                                     <td>{{ $mate->nombre }}</td>
+                                     <td>{{ $mate->profesor->nombre }} {{ $mate->profesor->apellido}}</td>
                                     <td>{{ $mate->descripcion }}</td>
                                     <td>{{ $mate->codigo }}</td>
                                     <td>

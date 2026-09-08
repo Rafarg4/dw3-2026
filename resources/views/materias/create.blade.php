@@ -98,6 +98,21 @@
                         </div>
                     </div>
 
+                    <div class="col-md-6 mb-3">
+                            <label for="descripcion" class="form-label">
+                                Seleciona un profesor <span class="text-danger">*</span>
+                            </label>
+                            <select id="id_profesor" name = "id_profesor"   class="form-select @error('profesor_id') is-invalid @enderror">
+                            <option value="">Selecciona una opcion</option>
+                            @foreach ($profesores as $profe)
+                            <option value ="{{$profe->id}}"> 
+                                {{$profe->nombre}} {{$profe->apellido}}
+                            </option>
+                            @endforeach
+                            </select>
+                        </div>
+                    </div>
+
                     <div class="row">
                         <div class="col-md-4 mb-3">
                             <label for="codigo" class="form-label">codigo</label>

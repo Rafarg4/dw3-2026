@@ -14,5 +14,9 @@ class Materia extends Model
         'codigo',
         'descripcion',
         'estado',
+        'id_profesor'
     ];
+    public function profesor(){
+        return $this->belongsTo(Profesor::class,'id');
+    }
 }
