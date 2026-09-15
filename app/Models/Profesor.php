@@ -18,5 +18,5 @@ class Profesor extends Model
         'especialidad',
         'estado',
     ];
-
+ 
 }

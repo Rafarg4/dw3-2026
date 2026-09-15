@@ -170,7 +170,25 @@
                                         @endif
                                     </td>
                                     <td>
-                        
+                                        <div class="acciones-profesor">
+                                            <a href="{{ route('materias.edit', $mate->id) }}"
+                                                class="btn btn-sm btn-warning">
+                                                Editar
+                                            </a>
+                                            <a href="{{ route('materias.show', $mate->id) }}"
+                                                class="btn btn-sm btn-info">
+                                                Ver
+                                            </a>
+                                            <form method="POST"
+                                                action="{{ route('materias.destroy', $mate->id) }}"
+                                                onsubmit="return confirm('¿Estás seguro de que deseas eliminar este profesor?');">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-sm btn-danger">
+                                                    Eliminar
+                                                </button>
+                                            </form>
+                                        </div>
                                     </td>
                                 </tr>
                             @empty

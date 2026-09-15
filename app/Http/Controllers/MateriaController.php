@@ -9,6 +9,7 @@ class MateriaController extends Controller
 {
     public function index(){
         $materias = Materia::with('profesor')->get();
+       // return $materias;
         return view('materias.index', compact('materias'));
     }
      public function create (){
@@ -25,5 +26,16 @@ class MateriaController extends Controller
     ]);
     return redirect()->route('materias.index')->with('success', 'Materia creada exitosamente.');
      }
+     public function edit($id)
+    {
+          $materias = Materia::findOrFail($id);
+          $profesores = Profesor::all();
+        return view('materias.edit',compact('materias','profesores'));
+    }
+     public function update(request $request,$id){
+        $materias = Materia::findOrFail($id);
+        $materias->update($request->all());
+        return redirect()->route('materias.index')->with('success', 'Materia actualizada exitosamente.');
+    }
     }
 

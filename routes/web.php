@@ -32,3 +32,7 @@ Route::get('/profesores/show/{id}', [App\Http\Controllers\ProfesorController::cl
 Route::get('/materias/index', [App\Http\Controllers\MateriaController::class, 'index'])->name('materias.index');
 Route::get('/materias/create', [App\Http\Controllers\MateriaController::class, 'create'])->name('materias.create');
 Route::post('materias/store', [App\Http\Controllers\MateriaController::class, 'store'])->name('materias.store');
+Route::get('/materias/edit/{id}', [App\Http\Controllers\MateriaController::class, 'edit'])->name('materias.edit');
+Route::put('/materias/update/{id}', [App\Http\Controllers\MateriaController::class, 'update'])->name('materias.update');
+Route::delete('/materias/destroy/{id}', [App\Http\Controllers\MateriaController::class, 'destroy'])->name('materias.destroy');
+Route::get('/materias/show/{id}', [App\Http\Controllers\MateriaController::class, 'show'])->name('materias.show');
