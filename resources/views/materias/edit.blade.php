@@ -94,10 +94,10 @@
                         </div>
                     </div>
 
-                    <div class="row">
-                        <div class="col-md-4 mb-3">
-                            <label for="codigo" class="form-label">Codigo</label>
-                            <input type="text" id="codigo" name="codigo" class="form-control"
+                    <div class="row"> 
+                         <div class="col-md-4 mb-3">
+                             <label for="codigo" class="form-label">Codigo</label>
+                             <input type="text" id="codigo" name="codigo" class="form-control"
                                 value="{{ old('codigo', $materias->codigo) }}">
                         </div>
 
