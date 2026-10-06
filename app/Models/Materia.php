@@ -19,4 +19,7 @@ class Materia extends Model
     public function profesor(){
         return $this->belongsTo(Profesor::class,'id_profesor');
     }
+    public function horarioDetalles(){
+        return $this->hasMany(HorarioDetalle::class,'id_materia');
+    }
 }

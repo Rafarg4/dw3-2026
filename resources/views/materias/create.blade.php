@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Nuevo profesor</title>
+    <title>Nueva materia</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
@@ -43,12 +43,13 @@
     </style>
 </head>
 <body>
+    @include('partials.menu')
     <main class="container profesores-page">
 
         <header class="profesores-header">
             <div>
-                <h1>Nueva Materia</h1>
-                <p>Registrar un nueva materia</p>
+                <h1>Nueva materia</h1>
+                <p>Registrar una nueva materia</p>
             </div>
             <a href="{{ route('materias.index') }}" class="btn btn-outline-secondary">
                 Volver
@@ -91,33 +92,41 @@
                             </label>
                             <input type="text" id="descripcion" name="descripcion"
                                 class="form-control @error('descripcion') is-invalid @enderror"
-                                value="{{ old('descripcion') }}" placeholder="Ingrese el descripcion">
+                                value="{{ old('descripcion') }}" placeholder="Ingrese la descripción">
                             @error('descripcion')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
                     </div>
 
-                    <div class="col-md-6 mb-3">
-                            <label for="descripcion" class="form-label">
-                                Seleciona un profesor <span class="text-danger">*</span>
-                            </label>
-                            <select id="id_profesor" name = "id_profesor"   class="form-select @error('profesor_id') is-invalid @enderror">
-                            <option value="">Selecciona una opcion</option>
-                            @foreach ($profesores as $profe)
-                            <option value ="{{$profe->id}}"> 
-                                {{$profe->nombre}} {{$profe->apellido}}
-                            </option>
-                            @endforeach
-                            </select>
-                        </div>
-                    </div>
-
                     <div class="row">
                         <div class="col-md-4 mb-3">
-                            <label for="codigo" class="form-label">codigo</label>
-                            <input type="text" id="codigo" name="codigo" class="form-control"
-                                value="{{ old('codigo') }}" placeholder="Ej: 5.123.456">
+                            <label for="id_profesor" class="form-label">
+                                Profesor <span class="text-danger">*</span>
+                            </label>
+                            <select id="id_profesor" name="id_profesor" class="form-select @error('id_profesor') is-invalid @enderror">
+                                <option value="">Selecciona una opción</option>
+                                @foreach ($profesores as $profe)
+                                    <option value="{{ $profe->id }}" {{ old('id_profesor') == $profe->id ? 'selected' : '' }}>
+                                        {{ $profe->nombre }} {{ $profe->apellido }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            @error('id_profesor')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="col-md-4 mb-3">
+                            <label for="codigo" class="form-label">
+                                Código <span class="text-danger">*</span>
+                            </label>
+                            <input type="text" id="codigo" name="codigo"
+                                class="form-control @error('codigo') is-invalid @enderror"
+                                value="{{ old('codigo') }}" placeholder="Ej: MAT-101">
+                            @error('codigo')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="estado" class="form-label">Estado</label>
@@ -138,7 +147,7 @@
                             Cancelar
                         </a>
                         <button type="submit" class="btn btn-primary">
-                            Guardar profesor
+                            Guardar materia
                         </button>
                     </div>
                 </form>

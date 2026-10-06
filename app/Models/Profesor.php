@@ -18,5 +18,7 @@ class Profesor extends Model
         'especialidad',
         'estado',
     ];
- 
+    public function materias(){
+        return $this->hasMany(Materia::class,'id_profesor');
+    }
 }

@@ -43,6 +43,7 @@
     </style>
 </head>
 <body>
+    @include('partials.menu')
     <main class="container profesores-page">
 
         <header class="profesores-header">

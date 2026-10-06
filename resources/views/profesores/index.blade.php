@@ -139,6 +139,12 @@
             </div>
         @endif
 
+        @if (session('error'))
+            <div class="alert alert-danger" role="alert">
+                {{ session('error') }}
+            </div>
+        @endif
+
         <section class="card profesores-card">
             <div class="card-body">
                 <div class="table-responsive">

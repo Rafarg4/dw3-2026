@@ -139,6 +139,12 @@
             </div>
         @endif
 
+        @if (session('error'))
+            <div class="alert alert-danger" role="alert">
+                {{ session('error') }}
+            </div>
+        @endif
+
         <section class="card profesores-card">
             <div class="card-body">
                 <div class="table-responsive">
@@ -146,7 +152,7 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Nobmre</th>
+                                <th>Nombre</th>
                                 <th>Profesor</th>
                                 <th>Descripcion</th>
                                 <th>Codigo</th>
@@ -159,7 +165,7 @@
                                 <tr>
                                     <td>{{ $mate->id }}</td>
                                     <td>{{ $mate->nombre }}</td>
-                                     <td>{{ $mate->profesor->nombre }} {{ $mate->profesor->apellido}}</td>
+                                    <td>{{ optional($mate->profesor)->nombre }} {{ optional($mate->profesor)->apellido }}</td>
                                     <td>{{ $mate->descripcion }}</td>
                                     <td>{{ $mate->codigo }}</td>
                                     <td>
@@ -181,7 +187,7 @@
                                             </a>
                                             <form method="POST"
                                                 action="{{ route('materias.destroy', $mate->id) }}"
-                                                onsubmit="return confirm('¿Estás seguro de que deseas eliminar este profesor?');">
+                                                onsubmit="return confirm('¿Estás seguro de que deseas eliminar esta materia?');">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-sm btn-danger">

@@ -43,12 +43,13 @@
     </style>
 </head>
 <body>
+    @include('partials.menu')
     <main class="container profesores-page">
 
         <header class="profesores-header">
             <div>
-                <h1>Editar materias</h1>
-                <p>Modificar los datos del materias</p>
+                <h1>Editar materia</h1>
+                <p>Modificar los datos de la materia</p>
             </div>
             <a href="{{ route('materias.index') }}" class="btn btn-outline-secondary">
                 Volver
@@ -82,28 +83,28 @@
 
                         <div class="col-md-6 mb-3">
                             <label for="id_profesor" class="form-label">Profesor</label>
-                           <select id="id_profesor" name ="id_profesor" class = "form-select" required> 
-                           <option value=""> Seleccione una opcion </option> 
-                           @foreach($profesores as $profesor)
-                           <option value="{{$profesor->id}}"
-                           {{ old('id_profesor', $materias->id_profesor) ==
-                            $profesor->id ? 'selected' : '' }}>
-                            {{$profesor->nombre}}   {{$profesor->apellido}}
-                        </option>
-                        @endforeach
+                            <select id="id_profesor" name="id_profesor" class="form-select" required>
+                                <option value="">Seleccione una opción</option>
+                                @foreach ($profesores as $profesor)
+                                    <option value="{{ $profesor->id }}"
+                                        {{ old('id_profesor', $materias->id_profesor) == $profesor->id ? 'selected' : '' }}>
+                                        {{ $profesor->nombre }} {{ $profesor->apellido }}
+                                    </option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
 
-                    <div class="row"> 
-                         <div class="col-md-4 mb-3">
-                             <label for="codigo" class="form-label">Codigo</label>
-                             <input type="text" id="codigo" name="codigo" class="form-control"
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <label for="codigo" class="form-label">Codigo</label>
+                            <input type="text" id="codigo" name="codigo" class="form-control"
                                 value="{{ old('codigo', $materias->codigo) }}">
                         </div>
 
                         <div class="col-md-4 mb-3">
                             <label for="descripcion" class="form-label">Descripcion</label>
-                            <input type="text" id="descripcion" name="Descripcion" class="form-control"
+                            <input type="text" id="descripcion" name="descripcion" class="form-control"
                                 value="{{ old('descripcion', $materias->descripcion) }}">
                         </div>
 
