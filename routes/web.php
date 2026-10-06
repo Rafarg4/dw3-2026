@@ -49,6 +49,11 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/horarios/update/{id}', [App\Http\Controllers\HorarioController::class, 'update'])->name('horarios.update');
     Route::delete('/horarios/destroy/{id}', [App\Http\Controllers\HorarioController::class, 'destroy'])->name('horarios.destroy');
     Route::get('/horarios/show/{id}', [App\Http\Controllers\HorarioController::class, 'show'])->name('horarios.show');
-});
+    //Rutas de Alumnos
+    Route::get('/alumnos/index', [App\Http\Controllers\AlumnoController::class, 'index'])->name('alumnos.index');
+    Route::get('/alumnos/create', [App\Http\Controllers\AlumnoController::class, 'create'])->name('alumnos.create');
+    Route::post('/alumnos/store', [App\Http\Controllers\AlumnoController::class, 'store'])->name('alumnos.store');
+    
+    });
 
 require __DIR__.'/auth.php';
